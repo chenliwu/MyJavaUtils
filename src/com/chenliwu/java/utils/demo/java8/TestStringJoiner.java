@@ -1,4 +1,4 @@
-package com.chenliwu.java.utils.demo.jdk8;
+package com.chenliwu.java.utils.demo.java8;
 
 import java.util.Arrays;
 import java.util.List;
