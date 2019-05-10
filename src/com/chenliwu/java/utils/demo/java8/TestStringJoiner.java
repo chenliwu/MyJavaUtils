@@ -45,4 +45,10 @@ public class TestStringJoiner {
 
     }
 
+
+    public static void test3(){
+        StringJoiner ddl = new StringJoiner(", ", "CREATE TABLE " + "tableName" + "(", ");");
+    }
+
+
 }
