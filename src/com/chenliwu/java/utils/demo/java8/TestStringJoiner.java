@@ -14,7 +14,9 @@ import java.util.stream.Collectors;
 public class TestStringJoiner {
 
     public static void main(String[] args) {
-        test2();
+        //test2();
+        //test4();
+        test5();
     }
 
     public static void test1() {
@@ -49,6 +51,26 @@ public class TestStringJoiner {
     public static void test3(){
         StringJoiner ddl = new StringJoiner(", ", "CREATE TABLE " + "tableName" + "(", ");");
     }
+
+    public static void test4(){
+        List<String> list = Arrays.asList("A", "B", "C", "D");
+        String str = list.stream().collect(Collectors.joining(" "+"---"+" "));
+        System.out.println(str);
+
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0;i<list.size();i++){
+            sb.append(list.get(i)).append(" "+"---"+" ");
+        }
+        System.out.println(sb.toString());
+    }
+
+    public static void test5(){
+        StringJoiner where = new StringJoiner("\nAND ", "where" + " ", "");
+        where.setEmptyValue("");
+        where.add("AAA");
+        System.out.println(where.toString());
+    }
+
 
 
 }
