@@ -16,8 +16,9 @@ public class ArrayListTester {
 
     public static void main(String[] args) {
         //testAnyMatch();
+        testAllMatch();
         // testFilter();
-        test1();
+        //test1();
     }
 
     /**
@@ -27,6 +28,13 @@ public class ArrayListTester {
         List<String> list = Arrays.asList("AAA", "BBB", "CCC");
         //遍历列表，只有一个item返回true，anyMatch就返回true
         boolean result = list.stream().anyMatch(str -> "CCC".equals(str));
+        System.out.println(result);
+    }
+
+    public static void testAllMatch() {
+        List<String> list = Arrays.asList("AAA", "AAA", "AAA");
+        //遍历列表，所有item返回true，allMatch才返回true
+        boolean result = list.stream().allMatch(str -> "AAA".equals(str));
         System.out.println(result);
     }
 
