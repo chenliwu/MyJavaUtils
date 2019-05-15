@@ -1,8 +1,7 @@
 package com.chenliwu.java.utils.demo.java8.stream;
 
 import java.awt.print.Pageable;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -30,16 +29,31 @@ public class StreamTester {
                 .skip(1)
                 .filter(e -> e != null)
                 .map((e) -> {
-                    Arrays.stream(e).forEach(System.out::println);
+                    //Arrays.stream(e).forEach(System.out::println);
                     return e[index];
                 })
                 .distinct()
                 .toArray(String[]::new);
 
         System.out.println();
-        Arrays.stream(result).forEach(e->{
+        Arrays.stream(result).forEach(e -> {
             System.out.println(e);
         });
+
+        Set<String> resultSet = new HashSet<>();
+        List<String> resultList = new ArrayList<>();
+        for (int i = 1; i < data.length; i++) {
+            if (data[i] != null) {
+                if (!resultSet.contains(data[i][index])) {
+                    resultSet.add(data[i][index]);
+                    resultList.add(data[i][index]);
+                }
+            }
+        }
+        System.out.println();
+        for(int i=0;i<resultList.size();i++){
+            System.out.println(resultList.get(i));
+        }
 
 
     }
