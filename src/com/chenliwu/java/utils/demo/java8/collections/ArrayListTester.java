@@ -2,7 +2,9 @@ package com.chenliwu.java.utils.demo.java8.collections;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 描述:
@@ -46,15 +48,18 @@ public class ArrayListTester {
         studentList.add(new Student("AAA", "1"));
         studentList.add(new Student("BBB", "2"));
 
-//        studentListTemp.stream().map(student -> {
-//            student.name = student.name+" map";
-//            return student;
-//        }).forEach(System.out::println);
-
         studentListTemp.addAll(studentList);
-        for (Student student : studentListTemp) {
-            student.name = student.name + " map";
-        }
+        studentListTemp.stream()
+                .map(student -> {
+                    student.name = student.name + " map";
+                    return student;
+                })
+                .forEach(System.out::println);
+
+//        studentListTemp.addAll(studentList);
+//        for (Student student : studentListTemp) {
+//            student.name = student.name + " map";
+//        }
 
 
         System.out.println("\n");
