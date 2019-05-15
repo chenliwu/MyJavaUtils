@@ -11,8 +11,9 @@ import java.util.*;
 public class OptionalTester {
 
     public static void main(String[] args) {
-        test1();
-        test2();
+        //test1();
+        //test2();
+        test3();
     }
 
     public static void test1() {
@@ -45,5 +46,14 @@ public class OptionalTester {
 
 
     }
+
+    public static void test3() {
+        List<Integer> list = Arrays.asList(10, 20, 30, 40, 50, 60, 70, 80, 90, 100);
+        Optional<Integer> optional = list.stream()
+                .filter(e -> e <= 50)
+                .findFirst();
+        System.out.println(optional.get());
+    }
+
 
 }
