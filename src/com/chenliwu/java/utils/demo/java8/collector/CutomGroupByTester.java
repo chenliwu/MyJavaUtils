@@ -16,7 +16,7 @@ public class CutomGroupByTester {
     public static void main(String[] args) {
         //Double[] ds = new Double[3];
         //Arrays.stream(ds).forEach(System.out::println);
-        //test1();
+        test1();
         test2();
     }
 
@@ -41,9 +41,9 @@ public class CutomGroupByTester {
         ///列下标，聚合类型，列名称
         List<ColumnIndex> valuesList = new ArrayList<>();
         //valuesList.add(new ColumnIndex("avg", "班级编号"));
-        valuesList.add(new ColumnIndex(0, "avg", "班级编号"));
-        //valuesList.add(new ColumnIndex(1, "sum", "学号"));
-        //valuesList.add(new ColumnIndex(2, "sum", "姓名"));
+        valuesList.add(new ColumnIndex(0, "", "班级编号"));
+        valuesList.add(new ColumnIndex(1, "", "学号"));
+        valuesList.add(new ColumnIndex(2, "", "姓名"));
 
         Map<Dimensions, Double[]> grouped = Arrays.stream(data)
                 .skip(1)
@@ -62,7 +62,7 @@ public class CutomGroupByTester {
             //entry.getKey() ;entry.getValue(); entry.setValue();
             //map.entrySet()  返回此映射中包含的映射关系的 Set视图。
             System.out.println("key= " + entry.getKey());
-            System.out.println("value size = " + entry.getValue().length);
+            //System.out.println("value size = " + entry.getValue().length);
             Arrays.stream(entry.getValue()).forEach(row -> {
                 System.out.println(row);
             });
@@ -90,16 +90,18 @@ public class CutomGroupByTester {
         ///列下标，聚合类型，列名称
         List<ColumnIndex> valuesList = new ArrayList<>();
         //valuesList.add(new ColumnIndex("avg", "班级编号"));
-        valuesList.add(new ColumnIndex(0, "avg", "班级编号"));
-        //valuesList.add(new ColumnIndex(1, "sum", "学号1"));
-        //valuesList.add(new ColumnIndex(2, "sum", "姓名1"));
+        valuesList.add(new ColumnIndex(0, "", "班级编号"));
+        valuesList.add(new ColumnIndex(1, "", "学号1"));
+        valuesList.add(new ColumnIndex(2, "", "姓名1"));
 
         Map<Dimensions, Double[]> grouped = getGrouped(data, dimensionList, valuesList);
 
         System.out.println("");
         for (Map.Entry<Dimensions, Double[]> entry : grouped.entrySet()) {
             System.out.println("key= " + entry.getKey());
-            Arrays.stream(entry.getValue()).collect(Collectors.toList()).stream();
+            Arrays.stream(entry.getValue()).forEach(row -> {
+                System.out.println(row);
+            });
             System.out.println();
         }
     }
