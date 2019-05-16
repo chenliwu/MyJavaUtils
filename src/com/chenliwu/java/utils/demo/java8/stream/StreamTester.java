@@ -1,6 +1,5 @@
 package com.chenliwu.java.utils.demo.java8.stream;
 
-import java.awt.print.Pageable;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

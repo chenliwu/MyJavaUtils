@@ -1,9 +1,7 @@
 package com.chenliwu.java.utils.demo.java8.collections;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -52,6 +50,11 @@ public class GroupByTester {
         Map<String, Integer> sum = items.stream().collect(Collectors.groupingBy(Item::getName, Collectors.summingInt(Item::getQty)));
         System.out.println(sum);
 
+
+        System.out.println("\nComparator.comparing");
+        Optional<Item> min =items.stream().collect(Collectors.minBy(Comparator.comparing(Item::getQty)));
+
+        min.ifPresent(System.out::println);
     }
 
 
@@ -61,6 +64,15 @@ public class GroupByTester {
         private BigDecimal price;
         //constructors, getter/setters
 
+
+        @Override
+        public String toString() {
+            return "Item{" +
+                    "name='" + name + '\'' +
+                    ", qty=" + qty +
+                    ", price=" + price +
+                    '}';
+        }
 
         public Item(String name, int qty, BigDecimal price) {
             this.name = name;
