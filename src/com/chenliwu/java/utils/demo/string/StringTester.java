@@ -40,6 +40,7 @@ public class StringTester {
     static Map<String,String> fillingValueMap = new HashMap<>();
     static {
         fillingValueMap.put("corpId","成员单位id");
+        fillingValueMap.put("userId","用户ID");
         fillingValueMap.put("corpName","成员单位名称");
     }
 
@@ -106,13 +107,16 @@ public class StringTester {
 
     public static void testDfsFillingSQL(){
 
-        //SQL语句没有表达式
+        //1、SQL语句没有表达式
         //String sql = "select * from corp";
 
-        //SQL语句中的表达式有默认值
-        String sql = "select * from corp where corpId = ${corpId|单位id默认值} and corpName = ${corpName|单位名称默认值}";
+        //2、SQL语句中有多个表达式，且所有表达式都有默认值
+        //String sql = "select * from corp where corpId = ${corpId|单位id默认值} and corpName = ${corpName|单位名称默认值}";
 
-        //SQL语句中的表达式没有默认值
+        //3、SQL语句中有多个表达式，有的表达式有默认值，有的表达式没有默认值
+        String sql = "select * from corp where corpId = ${corpId|单位id默认值} and corpName = ${corpName|单位名称默认值} and userId = ${userId}";
+
+        //4、SQL语句中的表达式没有默认值
         //String sql2 = "select * from corp where corpId = ${corpId} and corpName = ${corpName}";
 
         System.out.println("\n未处理的SQL语句："+sql);
