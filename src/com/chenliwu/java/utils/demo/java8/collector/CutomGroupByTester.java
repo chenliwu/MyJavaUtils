@@ -41,8 +41,8 @@ public class CutomGroupByTester {
         ///列下标，聚合类型，列名称
         List<ColumnIndex> valuesList = new ArrayList<>();
         //valuesList.add(new ColumnIndex("avg", "班级编号"));
-        valuesList.add(new ColumnIndex(0, "", "班级编号"));
-        valuesList.add(new ColumnIndex(1, "", "学号"));
+        valuesList.add(new ColumnIndex(0, "sum", "班级编号"));
+        valuesList.add(new ColumnIndex(1, "avg", "学号"));
         valuesList.add(new ColumnIndex(2, "", "姓名"));
 
         Map<Dimensions, Double[]> grouped = Arrays.stream(data)
@@ -90,8 +90,8 @@ public class CutomGroupByTester {
         ///列下标，聚合类型，列名称
         List<ColumnIndex> valuesList = new ArrayList<>();
         //valuesList.add(new ColumnIndex("avg", "班级编号"));
-        valuesList.add(new ColumnIndex(0, "", "班级编号"));
-        valuesList.add(new ColumnIndex(1, "", "学号1"));
+        valuesList.add(new ColumnIndex(0, "sum", "班级编号"));
+        valuesList.add(new ColumnIndex(1, "avg", "学号1"));
         valuesList.add(new ColumnIndex(2, "", "姓名1"));
 
         Map<Dimensions, Double[]> grouped = getGrouped(data, dimensionList, valuesList);
