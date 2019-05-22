@@ -77,7 +77,12 @@ public class StringTester {
             fillingValue = values[1];
         }else{
             //没有默认值
-            fillingValue = fillingValueMap.get(values[0]);
+            //fillingValue = fillingValueMap.get(values[0]);
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("'");
+            stringBuilder.append(fillingValueMap.get(values[0]));
+            stringBuilder.append("'");
+            fillingValue = stringBuilder.toString();
         }
         //使用解析好的值替换SQL语句中的表达式
         sql = sql.replace(expression,fillingValue);
@@ -89,7 +94,7 @@ public class StringTester {
      * 测试表达式解析和填充值
      */
     public static void test3(){
-        String sql = "select * from corp where corpId = ${corpId|1234} and corpName = ${corpName|成员单位}";
+        String sql = "select * from corp where corpId = ${corpId|'1234'} and corpName = ${corpName|'成员单位'}";
         String valueString = " corpId|1234 ";
         //转义字符前面要加上双斜杠\\
         valueString = valueString.replaceAll(" ","");
@@ -111,10 +116,10 @@ public class StringTester {
         //String sql = "select * from corp";
 
         //2、SQL语句中有多个表达式，且所有表达式都有默认值
-        //String sql = "select * from corp where corpId = ${corpId|单位id默认值} and corpName = ${corpName|单位名称默认值}";
+        //String sql = "select * from corp where corpId = ${corpId|'单位id默认值'} and corpName = ${corpName|'单位名称默认值'}";
 
         //3、SQL语句中有多个表达式，有的表达式有默认值，有的表达式没有默认值
-        String sql = "select * from corp where corpId = ${corpId|单位id默认值} and corpName = ${corpName|单位名称默认值} and userId = ${userId}";
+        String sql = "select * from corp where corpId = ${corpId|'单位id默认值'} and corpName = ${corpName|'单位名称默认值'} and userId = ${userId}";
 
         //4、SQL语句中的表达式没有默认值
         //String sql2 = "select * from corp where corpId = ${corpId} and corpName = ${corpName}";
