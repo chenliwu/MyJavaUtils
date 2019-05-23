@@ -119,7 +119,7 @@ public class StringTester {
         //String sql = "select * from corp where corpId = ${corpId|'单位id默认值'} and corpName = ${corpName|'单位名称默认值'}";
 
         //3、SQL语句中有多个表达式，有的表达式有默认值，有的表达式没有默认值
-        String sql = "select * from corp where corpId = ${corpId|'单位id默认值'} and corpName = ${corpName|'单位名称默认值'} and userId = ${userId}";
+        String sql = "select * from corp where corpId = ${corpId|'单位id默认值' } and corpName = ${corpName|'单位名称默认值'} and userId = ${userId}";
 
         //4、SQL语句中的表达式没有默认值
         //String sql2 = "select * from corp where corpId = ${corpId} and corpName = ${corpName}";
