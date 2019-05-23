@@ -50,35 +50,44 @@ public class FreeMarkerTester {
         Map<String,Object> params = new HashMap<>();
         params.put("corpId","成员单位ID");
 
-        System.out.println("\nSQL："+sql);
-        System.out.println("\n处理输出："+resolveFreemarkerSql(sql,params));
-        System.out.println();
+        try{
+            System.out.println("\nSQL："+sql);
+            System.out.println("\n处理输出："+resolveFreemarkerSql(sql,params));
+            System.out.println();
+        }catch (Exception e){
+            System.out.println("异常："+e.getMessage());
+        }
     }
 
     /**
      * 解析Freemarker语法的SQL语句
      *
-     * @param freemarkerSql
-     * @param params
+     * @param freemarkerSql     freemarker语法的SQL语句
+     * @param params            参数映射对象
      * @return
      */
-    public static String resolveFreemarkerSql(String freemarkerSql,Map<String,Object> params){
-        String sql = freemarkerSql;
-        Configuration cfg = new Configuration();
-        StringTemplateLoader stringLoader = new StringTemplateLoader();
-        stringLoader.putTemplate("myTemplate",freemarkerSql);
+    public static String resolveFreemarkerSql(String freemarkerSql,Map<String,Object> params) throws TemplateException,IOException{
+        String sql;
 
+        //1、加载String模板串
+        StringTemplateLoader stringLoader = new StringTemplateLoader();
+        stringLoader.putTemplate("freemarkerSql",freemarkerSql);
+
+        //2、创建模板对象
+        Configuration cfg = new Configuration();
         cfg.setTemplateLoader(stringLoader);
 
         try {
-            Template template = cfg.getTemplate("myTemplate","utf-8");
+            //3、获取模板对象
+            Template template = cfg.getTemplate("freemarkerSql","utf-8");
             StringWriter writer = new StringWriter();
+            //4、解析模板获得字符串
             template.process(params, writer);
             sql = writer.toString();
         } catch (TemplateException e) {
-            e.printStackTrace();
+            throw new TemplateException("解析SQL语句失败，请检查SQL语句是否正确："+e.getMessage(),e.getEnvironment());
         }catch (IOException e) {
-            e.printStackTrace();
+            throw e;
         }
 
         return sql;
