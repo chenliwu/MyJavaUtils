@@ -8,6 +8,7 @@ import freemarker.template.TemplateException;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  * Created by chenlw on 2019/05/23  10:01.
@@ -15,7 +16,8 @@ import java.util.Map;
 public class FreeMarkerTester {
 
     public static void main(String[] args) {
-        test2();
+        //test2();
+        test3();
     }
 
     public static void test1(){
@@ -45,10 +47,36 @@ public class FreeMarkerTester {
         }
     }
 
+    /**
+     * 测试Freemarker语法的SQL语句
+     *
+     * 问题记录：
+     * 1、默认值为字符串时，丢失单引号：${corpId!'默认成员单位ID'}，解析完后返回了 默认成员单位ID，我们期望的结果是返回'默认成员单位ID'。
+     * 解决办法：
+     * （1）字符串内增加转义字符：${corpId!'\'123456\''}， 返回 '123456'
+     * （2）在表达式前后加入单引号： '${corpId!'123456'}'，返回 '123456'
+     *
+     */
     public static void test2(){
-        String sql = "select * from corp where corpId = ${corpId} and corpName = ${corpName!'默认成员单位名称'}";
+        //1、使用Freemarker表达式，${}
+        //String sql = "select * from corp where corpId = ${corpId!'\'默认成员单位ID\''} and corpName = ${corpName!'默认成员单位名称'}";
+
+        String sql = "select * from corp where corpId = '${corpId!'123456'}'";
+        //String sql = "select * from corp where corpId = ${corpId!'\\'123456\\''}";
+
+        //2、加入if/else指令
+        //String sql = "select * from corp <#if corpId??> where corpId = ${corpId}</#if>";
+//        StringBuilder sb = new StringBuilder();
+//        sb.append("select * from corp ");
+//        sb.append("<#if corpId?? && corpName??> ");
+//        sb.append("where corpId = '${corpId}' and corpName = '${corpName}'");
+//        sb.append("</#if> ");
+//        String sql = sb.toString();
+
         Map<String,Object> params = new HashMap<>();
-        params.put("corpId","成员单位ID");
+        //params.put("corpId","成员单位ID");
+        //params.put("corpName","成员单位名称");
+
 
         try{
             System.out.println("\nSQL："+sql);
@@ -58,6 +86,21 @@ public class FreeMarkerTester {
             System.out.println("异常："+e.getMessage());
         }
     }
+
+    public static void test3(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("请输入SQL：");
+        String sql = scanner.nextLine();
+        Map<String,Object> params = new HashMap<>();
+        try{
+            System.out.println("\nSQL："+sql);
+            System.out.println("\n处理输出："+resolveFreemarkerSql(sql,params));
+            System.out.println();
+        }catch (Exception e){
+            System.out.println("异常："+e.getMessage());
+        }
+    }
+
 
     /**
      * 解析Freemarker语法的SQL语句
