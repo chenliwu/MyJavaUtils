@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd47ede8-4d68-4234-836f-abde82fe46cc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/com_alibaba_fastjson_1_2_17.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/org_freemarker_freemarker_2_3_23.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/chenliwu/java/utils/demo/freemarker/FreeMarkerTester.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/a.ftl" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/java_json.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyJavaUtils.iml" afterPath="$PROJECT_DIR$/MyJavaUtils.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/chenliwu/java/utils/demo/string/StringTester.java" afterPath="$PROJECT_DIR$/src/com/chenliwu/java/utils/demo/string/StringTester.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/chenliwu/java/utils/demo/freemarker/FreeMarkerTester.java" afterPath="$PROJECT_DIR$/src/com/chenliwu/java/utils/demo/freemarker/FreeMarkerTester.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,8 +54,8 @@
       <file leaf-file-name="FreeMarkerTester.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/chenliwu/java/utils/demo/freemarker/FreeMarkerTester.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="58" column="27" lean-forward="true" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="27" />
+            <state relative-caret-position="114">
+              <caret line="58" column="27" lean-forward="false" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#416#417#0" expanded="true" />
@@ -395,7 +388,7 @@
       <workItem from="1557969535400" duration="21336000" />
       <workItem from="1558054699373" duration="2718000" />
       <workItem from="1558512329877" duration="7225000" />
-      <workItem from="1558572791954" duration="6017000" />
+      <workItem from="1558572791954" duration="6426000" />
     </task>
     <task id="LOCAL-00001" summary="JAVA8特性练习">
       <created>1557130125115</created>
@@ -558,11 +551,18 @@
       <option name="project" value="LOCAL" />
       <updated>1558521411361</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="解析Freemarker语法的SQL语句">
+      <created>1558580942202</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1558580942203</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106616000" />
+    <option name="totallyTimeSpent" value="107025000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -618,7 +618,8 @@
     <MESSAGE value="JAVA8特性练习-测试自定义收集器" />
     <MESSAGE value="JAVA8特性练习" />
     <MESSAGE value="递归处理String中的自定义表达式" />
-    <option name="LAST_COMMIT_MESSAGE" value="递归处理String中的自定义表达式" />
+    <MESSAGE value="解析Freemarker语法的SQL语句" />
+    <option name="LAST_COMMIT_MESSAGE" value="解析Freemarker语法的SQL语句" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1002,8 +1003,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chenliwu/java/utils/demo/freemarker/FreeMarkerTester.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="58" column="27" lean-forward="true" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="27" />
+        <state relative-caret-position="114">
+          <caret line="58" column="27" lean-forward="false" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#416#417#0" expanded="true" />

@@ -73,15 +73,14 @@ public class FreeMarkerTester {
         try {
             Template template = cfg.getTemplate("myTemplate","utf-8");
             StringWriter writer = new StringWriter();
-            try {
-                template.process(params, writer);
-                sql = writer.toString();
-            } catch (TemplateException e) {
-                e.printStackTrace();
-            }
-        } catch (IOException e) {
+            template.process(params, writer);
+            sql = writer.toString();
+        } catch (TemplateException e) {
+            e.printStackTrace();
+        }catch (IOException e) {
             e.printStackTrace();
         }
+
         return sql;
     }
 
