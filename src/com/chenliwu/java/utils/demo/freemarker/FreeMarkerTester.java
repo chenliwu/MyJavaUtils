@@ -74,7 +74,7 @@ public class FreeMarkerTester {
         stringLoader.putTemplate("freemarkerSql",freemarkerSql);
 
         //2、创建模板对象
-        Configuration cfg = new Configuration();
+        Configuration cfg = new Configuration(Configuration.VERSION_2_3_23);
         cfg.setTemplateLoader(stringLoader);
 
         try {
