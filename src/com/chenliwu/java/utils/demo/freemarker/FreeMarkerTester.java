@@ -73,7 +73,8 @@ public class FreeMarkerTester {
 //        sb.append("</#if> ");
 //        String sql = sb.toString();
 
-        Map<String,Object> params = new HashMap<>();
+        //Map<String,Object> params = new HashMap<>();
+        Map<String,Object> params = null;
         //params.put("corpId","成员单位ID");
         //params.put("corpName","成员单位名称");
 
@@ -89,9 +90,23 @@ public class FreeMarkerTester {
 
     public static void test3(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("请输入SQL：");
-        String sql = scanner.nextLine();
-        Map<String,Object> params = new HashMap<>();
+        //System.out.println("请输入SQL：");
+        ///String sql = scanner.nextLine();
+        String sql = "SELECT * FROM (\n" +
+                "SELECT \n" +
+                "SC.NAME \"所属成员单位\",\n" +
+                "USERNAME \"用户名\",\n" +
+                "LOGIN_NAME \"登录名\",\n" +
+                "SEX \"性别\",\n" +
+                "PHONE \"手机\",\n" +
+                "EMAIL \"邮箱\"\n" +
+                "FROM SYS_USER SU JOIN SYS_CORP SC ON SU.CORP_ID = SC.ID\n" +
+                "AND SU.CORP_ID = '${corpId}'\n" +
+                ") cb_view WHERE 1=0";
+        //Map<String,Object> params = new HashMap<>();
+        //Map<String,Object> params = new HashMap<>();
+        Map<String,Object> params =null;
+        //params.put("corpId","asdadads");
         try{
             System.out.println("\nSQL："+sql);
             System.out.println("\n处理输出："+resolveFreemarkerSql(sql,params));
